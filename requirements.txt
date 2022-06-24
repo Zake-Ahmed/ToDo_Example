@@ -5,3 +5,4 @@ flask_wtf
 wtforms
 pytest
 pytest-cov
+flask_testing
