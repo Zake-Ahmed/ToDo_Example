@@ -5,9 +5,6 @@ from flask_testing import TestCase
 # import the app's classes and objects
 from application import *
 
-from application.models import ToDos
-from application.forms import ToDosF
-
 # Create the base class
 class TestBase(TestCase):
     def create_app(self):
