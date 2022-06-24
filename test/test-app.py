@@ -3,7 +3,8 @@ from flask import url_for
 from flask_testing import TestCase
 
 # import the app's classes and objects
-from application import *
+from app import app, db,ToDos
+
 
 # Create the base class
 class TestBase(TestCase):
@@ -23,7 +24,7 @@ class TestBase(TestCase):
         # Create table
         db.create_all()
         # Create test registree
-        sample1 = ToDos(task="MsWoman" ,completed = False)
+        sample1 = ToDos(task="MsWoman")
         # save users to database
         db.session.add(sample1)
         db.session.commit()
@@ -36,14 +37,14 @@ class TestBase(TestCase):
 
 # Write a test class to test Read functionality
 class TestViews(TestBase):
-    def test_home_get(self):
+    def test_index_get(self):
         response = self.client.get(url_for('index'))
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'MsWoman', response.data)
-
-    def test_home_get(self):
+"""
+    def test_about_get(self):
         response = self.client.get(url_for('about'))
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'MsWoman', response.data)
-
+"""
     
